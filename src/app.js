@@ -6,11 +6,12 @@ const app = express();
 app.use(
   cors({
     origin: "*",
-    credentials:this.true,
+    credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 
 const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
