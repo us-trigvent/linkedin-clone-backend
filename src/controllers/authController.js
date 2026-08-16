@@ -10,6 +10,7 @@ const signup = async (req, res) => {
             phoneNumber,
             password,
             confirmPassword,
+            profileImage
         } = req.body;
 
         if (
@@ -51,7 +52,7 @@ const signup = async (req, res) => {
             email,
             phoneNumber,
             password: hashedPassword,
-            profileImage: req.file ? req.file.path : "",
+            profileImage: profileImage,
         });
 
         return res.status(201).json({
