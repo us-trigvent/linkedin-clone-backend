@@ -45,8 +45,8 @@ const addEducation = async (req, res) => {
 
 const getEducation = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("education");
- 
+    const user = await User.findById(req.user.userId)
+      .select("education");
     if (!user) {
       return res.status(404).json({
         success: false,

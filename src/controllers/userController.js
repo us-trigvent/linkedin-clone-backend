@@ -15,10 +15,10 @@ const getUserProfile = async (req, res) => {
             user,
         });
     } catch (err) {
-        res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+        return res.status(500).json({
+            success: false,
+            message: err.message,
+        });
     }
 }
-module.exports = {getUserProfile};
+module.exports = { getUserProfile };
