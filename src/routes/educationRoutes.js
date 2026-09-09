@@ -6,11 +6,16 @@ const {
   getEducation,
   updateEducation,
   deleteEducation,
+  getSpecificEducation,
 } = require("../controllers/educationController");
 
 router.post("/", authMiddleware, addEducation);
 router.get("/", authMiddleware, getEducation);
 router.put("/:educationId", authMiddleware, updateEducation);
 router.delete("/:educationId", authMiddleware, deleteEducation);
-
+router.get(
+  "/:educationId",
+  authMiddleware,
+  getSpecificEducation
+);
 module.exports = router;
