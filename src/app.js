@@ -5,6 +5,7 @@ const app = express();
 const postRoutes = require("./routes/postRoutes");
 const userRoutes = require("./routes/userRoutes");
 const educationRoutes = require("./routes/educationRoutes");
+const connectionRoutes = require("./routes/connectionRoutes")
 const allowedOrigins = [
   "http://localhost:5173",
   "https://connect-pro-pksw.vercel.app",
@@ -26,5 +27,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/users/education", educationRoutes);
+app.use("/api/connections", connectionRoutes);
 
 module.exports = app;

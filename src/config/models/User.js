@@ -78,6 +78,12 @@ const userSchema = new mongoose.Schema({
       ref: "User",
     },
   ],
+  connectionRequests: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 
   profileVisits: {
     type: Number,
