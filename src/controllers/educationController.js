@@ -45,8 +45,8 @@ const addEducation = async (req, res) => {
 
 const getEducation = async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId).select("education");
-
+    const user = await User.findById(req.user.userId)
+      .select("education");
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -58,6 +58,41 @@ const getEducation = async (req, res) => {
       success: true,
       data: user.education,
     });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+const getSpecificEducation = async (req, res) => {
+  try {
+    const { educationId } = req.params;
+
+    const user = await User.findById(req.user.userId)
+      .select("education");
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const education = user.education.id(educationId);
+
+    if (!education) {
+      return res.status(404).json({
+        success: false,
+        message: "Education not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: education,
+    });
+
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -153,4 +188,5 @@ module.exports = {
   getEducation,
   updateEducation,
   deleteEducation,
+  getSpecificEducation
 };
