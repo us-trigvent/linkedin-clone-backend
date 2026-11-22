@@ -8,6 +8,7 @@ const educationRoutes = require("./routes/educationRoutes");
 const allowedOrigins = [
   "http://localhost:5173",
   "https://connect-pro-pksw.vercel.app",
+  "https://orbit-community-frontend-27su.vercel.app",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
